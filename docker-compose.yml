@@ -5,12 +5,11 @@ services:
     image: postgres:16.3
     container_name: postgres-db
     environment:
-      POSTGRES_DB: socialnetwork
+      POSTGRES_DB: social
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: password
     volumes:
       - db-data:/var/lib/postgresql/data
-      - ./scripts:/docker-entrypoint-initdb.d
     ports:
       - '5432:5432'
 
