@@ -9,6 +9,7 @@ import (
 
 var (
 	ErrNotFound          = errors.New("resource not found")
+	ErrConflict          = errors.New("resource already exists")
 	QueryTimeoutDuration = time.Second * 5
 )
 
@@ -28,6 +29,8 @@ type Storage struct {
 		Create(context.Context, *Comment) error
 	}
 	Followers interface {
+		Follow(ctx context.Context, followerID int64, userID int64) error
+		Unfollow(ctx context.Context, followerID int64, userID int64) error
 	}
 }
 
