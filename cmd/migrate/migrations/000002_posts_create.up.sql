@@ -1,3 +1,5 @@
+CREATE EXTENSION IF NOT EXISTS citext;
+
 CREATE TABLE IF NOT EXISTS posts (
   id bigserial PRIMARY KEY,
   title text NOT NULL,
