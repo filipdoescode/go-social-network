@@ -10,9 +10,11 @@ func (app *application) getUserFeedHandler(w http.ResponseWriter, r *http.Reques
 	// pagination, filters, sort
 
 	fq := store.PaginatedFeedQuery{
-		Limit:  10,
+		Limit:  20,
 		Offset: 0,
 		Sort:   "desc",
+		Tags:   []string{},
+		Search: "",
 	}
 
 	fq, err := fq.Parse(r)
@@ -27,7 +29,7 @@ func (app *application) getUserFeedHandler(w http.ResponseWriter, r *http.Reques
 		return
 	}
 
-	feed, err := app.store.Posts.GetUserFeed(r.Context(), int64(86), fq)
+	feed, err := app.store.Posts.GetUserFeed(r.Context(), int64(12), fq)
 
 	if err != nil {
 		app.internalServerError(w, r, err)
